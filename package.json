@@ -9,6 +9,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5000",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/BurlingtonCodeAcademy/til.git"
@@ -23,13 +24,14 @@
   },
   "homepage": "https://github.com/BurlingtonCodeAcademy/til#readme",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "mime": "^2.3.1",
     "mime-types": "^2.1.18",
     "moment": "^2.22.2",
     "mongodb": "^3.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1"
   },
   "devDependencies": {
