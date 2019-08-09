@@ -29,8 +29,8 @@ class Facts extends React.Component {
         <ul>
           {this.state.facts.map(fact => {
             return (
-              <Link to = {`/facts/${fact._id}`}>
-              <li key={fact._id}>
+              <Link key={fact._id} to = {`/fact/${fact._id}`}>
+              <li >
                 <p>Title: {fact.text}</p>
                 <p>Date: {fact.when}</p>
               </li>

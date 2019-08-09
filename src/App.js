@@ -16,14 +16,11 @@ class App extends React.Component {
   render () {
     return (
       <Router>
-      <div>
 
-
-        <Route exact path="/" component= {Home} />
-        <Route exact path = "/facts" component = {Facts}/>
-        <Route exact path="/facts/:objectId?" render = {({match}) => <SingleFact id = {match.params.objectId} />}/>
+        <Route exact path= "/" component= {Home} />
+        <Route exact path= "/facts" component = {Facts}/>
+        <Route exact path= "/fact/:objectId?" component = {SingleFact} /* {({match}) => <SingleFact id = {match.params.objectId} />} *//>
       
-      </div>
       </Router>
 
     )

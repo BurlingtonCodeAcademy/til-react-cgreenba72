@@ -10,6 +10,7 @@ class SingleFact extends React.Component {
         factId : ''
     }
   }
+
   componentDidMount(){
     let objectId = window.location.pathname.split('/')[2]
     fetch(`/facts/${objectId}`)
@@ -24,12 +25,18 @@ class SingleFact extends React.Component {
   }
 
   render(){
-    console.log(this.state.fact)
+    console.log(this.state.factText)
     return (
       <div>
         <p>{this.state.factText}</p>
         <p>{this.state.factWhen}</p>
+
+      <form method="POST" action= {`/facts/${this.state.factId}`}>
+      <input type="text" name="text"></input>
+      <input type="submit"></input>
+    </form>
       </div>
+      
     )
   }
 }

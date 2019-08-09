@@ -17,6 +17,8 @@ app.get("/facts", getAll);
 
 app.get("/facts/:objectId", getOne);
 
+app.post("/facts/:objectId", editFact)
+
 async function getOne(request, response) {
   console.log("Hit")
   let cursor = await store.one(request.params.objectId);
@@ -46,6 +48,13 @@ async function getAll(request, response) {
       response.type("application/json").send(JSON.stringify(output));
     }
   );
+}
+
+async function editFact(request,response){
+  let id = request.params.objectId
+  let result = await store.edit(request.body.text.trim(),id);
+  console.log(result)
+  response.redirect(`/fact/${id}`)
 }
 
 app.post("/facts", addFact);
