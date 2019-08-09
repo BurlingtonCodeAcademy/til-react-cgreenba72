@@ -24,6 +24,10 @@ class SingleFact extends React.Component {
     })
   }
 
+  onDeleteClick(e){
+    e.preventDefault()
+  }
+
   render(){
     console.log(this.state.factText)
     return (
@@ -34,6 +38,10 @@ class SingleFact extends React.Component {
       <form method="POST" action= {`/facts/${this.state.factId}`}>
       <input type="text" name="text"></input>
       <input type="submit"></input>
+     
+    </form>
+    <form method="POST" action= {`/deletefact/${this.state.factId}`}>
+    <input type="submit" value="Delete"></input>
     </form>
       </div>
       

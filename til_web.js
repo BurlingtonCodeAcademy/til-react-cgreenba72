@@ -17,10 +17,14 @@ app.get("/facts", getAll);
 
 app.get("/facts/:objectId", getOne);
 
-app.post("/facts/:objectId", editFact)
+app.post("/facts/:objectId", editFact);
+
+app.post("/facts", addFact);
+
+app.post("/deletefact/:objectId", deleteFact)
 
 async function getOne(request, response) {
-  console.log("Hit")
+  //console.log("Hit")
   let cursor = await store.one(request.params.objectId);
   let output = [];
   cursor.forEach(
@@ -52,12 +56,11 @@ async function getAll(request, response) {
 
 async function editFact(request,response){
   let id = request.params.objectId
-  let result = await store.edit(request.body.text.trim(),id);
+  let result = await store.edit(request.body.text.trim(), id);
   console.log(result)
   response.redirect(`/fact/${id}`)
 }
 
-app.post("/facts", addFact);
 
 async function addFact(request, response) {
   let result = await store.addFact(request.body.text.trim());
@@ -66,6 +69,18 @@ async function addFact(request, response) {
     id: result.id
   };
   response.type("application/json").send(JSON.stringify(output));
+}
+
+async function deleteFact(request, response){
+  console.log("top of delete fact")
+  let id = request.params.objectId
+  let result = await store.delete(id)
+  console.log(result)
+  let output = {
+    status: "200",
+  };
+  //response.type("application/json").send(JSON.stringify(output));
+  response.redirect("/")
 }
 
 app.listen(port, () => console.log(`TIL web app listening on port ${port}!`));
